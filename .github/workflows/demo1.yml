@@ -3,7 +3,19 @@ on:
   pull_request: 
     types: 
       - opened
+    branches: 
+      - main
+      - 'dev-*'
+      - 'feat/**'
   workflow_dispatch: 
+  push: 
+    branches: 
+      - main
+      - 'dev-*'
+      - 'feat/**'
+    paths-ignore: # work flow will not be triggered if a file ins side the specified path changed.    paths:   is the opposite
+      - '.github/workflows/*'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
